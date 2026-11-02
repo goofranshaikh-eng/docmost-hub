@@ -10,3 +10,8 @@ Files changed:
 - `apps/server/src/collaboration/collaboration.util.ts`
 - `apps/server/src/collaboration/collaboration.util.spec.ts`
 - `apps/server/test/search/code-block-search.spec.ts`
+The `P_NUM` code-block search test now checks the exact text `jsonToText` stores.
+
+In `apps/server/test/search/code-block-search.spec.ts`, the case `should find XML tag name P_NUM in code block` still checks that `P_NUM` is searchable, and it now also asserts the stored code-block text matches `< P_NUM` followed later by `TEST`.
+
+`codeBlockSearchText` and the replace in `collaboration.util.ts` were left unchanged. `collaboration.util.spec.ts` passed: 15 tests.

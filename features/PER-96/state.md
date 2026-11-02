@@ -1,15 +1,15 @@
 ---
 schema_version: 1
 key: PER-96
-status: pr_reviewed
-current_node: pr_review
+status: in_development
+current_node: dev
 track: standard
 involved_repos:
 - app
 depends_on: []
 owner: goos
-lease_until: '2026-11-04T12:48:29.330080+00:00'
-revision: 60
+lease_until: '2026-11-04T13:45:02.573056+00:00'
+revision: 77
 hub_sha: null
 ticket_hash: 70947446b7a9a044
 jira_hash: 70947446b7a9a044
@@ -22,14 +22,14 @@ stories:
 child_ticket_keys: []
 critic_iterations: 0
 dev_retries: 0
-pr_revision_rounds: 0
+pr_revision_rounds: 1
 gate_rounds: {}
 pr_ids:
   hub_plan: '3'
   hub_arch: '4'
   hub: '4'
   app: '1'
-waiting_for: feature_pr_human
+waiting_for: null
 tokens_in: 48499
 tokens_out: 9237
 cost_anthropic_usd: 0.2837
@@ -105,6 +105,29 @@ history:
 - node: pr_review
   note: awaiting feature_pr_human
   at: '2026-11-02T13:31:12.084568+00:00'
+- node: catch_up
+  note: "unrepaired feature PR comments \u2192 fix"
+  at: '2026-11-02T13:45:02.573557+00:00'
+- node: pr_review
+  note: 'fix:app:issue:minor:Minor test gap: this test checks that P_NUM is present,
+    but it does not check th'
+  at: '2026-11-02T13:45:07.357604+00:00'
+- node: pr_review
+  note: auto-fix tier=minor round=1
+  at: '2026-11-02T13:45:09.336883+00:00'
+- node: pr_review
+  note: "route minor \u2192 loop pr_fix_minor: dev \u2192 pre_pr_qa \u2192 pr_review"
+  at: '2026-11-02T13:45:09.819338+00:00'
+- node: dev
+  note: starting
+  at: '2026-11-02T13:45:09.819763+00:00'
+- node: dev
+  note: 'not checked before PR, commands empty in project.yaml: repos.app.commands.test,
+    repos.app.commands.lint'
+  at: '2026-11-02T13:45:09.820576+00:00'
+- node: dev
+  note: done 01-app
+  at: '2026-11-02T13:47:02.444030+00:00'
 ---
 
 # Feature state

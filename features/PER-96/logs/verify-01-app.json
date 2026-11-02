@@ -1,1 +1,1 @@
-{"story": "01-app", "repo": "app", "attempt": 1, "ok": true, "at": "2026-11-02T12:57:57+00:00", "checks": [{"name": "lint", "cmd": "", "exit": null, "summary": "no command set"}, {"name": "test", "cmd": "", "exit": null, "summary": "no command set"}]}
+{"story": "01-app", "repo": "app", "attempt": 1, "ok": true, "at": "2026-11-02T13:47:02+00:00", "checks": [{"name": "lint", "cmd": "", "exit": null, "summary": "no command set"}, {"name": "test", "cmd": "", "exit": null, "summary": "no command set"}]}
