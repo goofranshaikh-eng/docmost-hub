@@ -31,3 +31,38 @@
 2026-11-02T12:57:57.000124+00:00 warning: no test command configured for app; verification skipped
 2026-11-02T12:57:57.002638+00:00 dev verify 01-app PASS attempt=1
 2026-11-02T12:57:59.847424+00:00 node end dev waiting=human_pr
+2026-11-02T13:22:27.719770+00:00 heartbeat pre_pr_qa
+2026-11-02T13:22:27.720421+00:00 node start pre_pr_qa
+2026-11-02T13:22:27.720828+00:00 node end pre_pr_qa waiting=None
+2026-11-02T13:22:27.725304+00:00 heartbeat open_pr
+2026-11-02T13:22:27.725378+00:00 node start open_pr
+2026-11-02T13:22:33.677771+00:00 node fail open_pr: gh pr create -R goofranshaikh-eng/docmost --base main --head feat/PER-96 --title PER-96: app --body Feature `PER-96` — repo `app`
+
+Merge order: app
+Sibling repos: app
+
+## Pre-PR QA
+# Pre-PR QA
+
+- stories present: yes
+- specs locked: True
+
+
+## Checks run before this PR
+
+**Story `01-app`** (attempt 1):
+- Lint: skipped (no command set)
+- Test: skipped (no command set)
+- Full log: `features/PER-96/logs/verify-01-app.log` in the hub
+
+Agent code review runs on this PR. Hub/spec PRs are human-only.
+ failed: pull request create failed: GraphQL: Head sha can't be blank, Base sha can't be blank, No commits between main and feat/PER-96, Head ref must be a branch, Base ref must be a branch (createPullRequest)
+
+2026-11-02T13:30:59.615153+00:00 heartbeat open_pr
+2026-11-02T13:30:59.615372+00:00 node start open_pr
+2026-11-02T13:31:04.334030+00:00 node end open_pr waiting=None
+2026-11-02T13:31:04.338893+00:00 heartbeat pr_review
+2026-11-02T13:31:04.338990+00:00 node start pr_review
+2026-11-02T13:31:05.088770+00:00 heartbeat reviewer
+2026-11-02T13:31:09.671091+00:00 reviewer llm model=claude-sonnet-4-5-20250929 in=4412 out=7 usd=0.013341
+2026-11-02T13:31:12.084860+00:00 node end pr_review waiting=feature_pr_human

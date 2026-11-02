@@ -1,15 +1,15 @@
 ---
 schema_version: 1
 key: PER-96
-status: developed
-current_node: dev
+status: pr_reviewed
+current_node: pr_review
 track: standard
 involved_repos:
 - app
 depends_on: []
 owner: goos
 lease_until: '2026-11-04T12:48:29.330080+00:00'
-revision: 49
+revision: 60
 hub_sha: null
 ticket_hash: 70947446b7a9a044
 jira_hash: 70947446b7a9a044
@@ -28,10 +28,11 @@ pr_ids:
   hub_plan: '3'
   hub_arch: '4'
   hub: '4'
-waiting_for: human_pr
-tokens_in: 44087
-tokens_out: 9230
-cost_anthropic_usd: 0.270359
+  app: '1'
+waiting_for: feature_pr_human
+tokens_in: 48499
+tokens_out: 9237
+cost_anthropic_usd: 0.2837
 history:
 - node: intake
   note: snapshot written
@@ -86,6 +87,24 @@ history:
 - node: dev
   note: 'human_mode: code ready, PR deferred'
   at: '2026-11-02T12:57:59.845907+00:00'
+- node: dev
+  note: 'human_mode: resume opens PR'
+  at: '2026-11-02T13:22:27.716437+00:00'
+- node: pre_pr_qa
+  note: report written
+  at: '2026-11-02T13:22:27.720750+00:00'
+- node: open_pr
+  note: push app ok
+  at: '2026-11-02T13:31:04.333856+00:00'
+- node: open_pr
+  note: PRs opened app:1
+  at: '2026-11-02T13:31:04.333900+00:00'
+- node: pr_review
+  note: diff loaded app chars=5297
+  at: '2026-11-02T13:31:05.088043+00:00'
+- node: pr_review
+  note: awaiting feature_pr_human
+  at: '2026-11-02T13:31:12.084568+00:00'
 ---
 
 # Feature state

@@ -20,8 +20,8 @@ Bug fix for search not finding XML tag names inside code blocks; single-repo beh
    - focus: Map tests to both acceptance criteria (P_NUM found, TEST still found), and add cases for nested tags, multiple code blocks, and mixed content/code.
 4. [x] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 5. [ ] **dev** _(auto)_ — Loop delivery.
-6. [ ] **pre_pr_qa** _(auto)_ — Loop delivery.
-7. [ ] **open_pr** _(auto)_ — Loop delivery.
+6. [x] **pre_pr_qa** _(auto)_ — Loop delivery.
+7. [x] **open_pr** _(auto)_ — Loop delivery.
 8. [ ] **pr_review** _(auto)_ — Loop delivery.
 9. [ ] **merge** _(auto)_ — Loop delivery.
 

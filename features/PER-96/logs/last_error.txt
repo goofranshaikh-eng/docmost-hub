@@ -1,0 +1,21 @@
+open_pr: gh pr create -R goofranshaikh-eng/docmost --base main --head feat/PER-96 --title PER-96: app --body Feature `PER-96` — repo `app`
+
+Merge order: app
+Sibling repos: app
+
+## Pre-PR QA
+# Pre-PR QA
+
+- stories present: yes
+- specs locked: True
+
+
+## Checks run before this PR
+
+**Story `01-app`** (attempt 1):
+- Lint: skipped (no command set)
+- Test: skipped (no command set)
+- Full log: `features/PER-96/logs/verify-01-app.log` in the hub
+
+Agent code review runs on this PR. Hub/spec PRs are human-only.
+ failed: pull request create failed: GraphQL: Head sha can't be blank, Base sha can't be blank, No commits between main and feat/PER-96, Head ref must be a branch, Base ref must be a branch (createPullRequest)
