@@ -12,7 +12,7 @@ Search bug where XML tag names inside code blocks are not found by full-text sea
 
 ## Steps
 
-1. [ ] **analyst (inline_story)** — Turn the bug report into a single implementable story with clear acceptance criteria and tech investigation notes.
+1. [x] **analyst (inline_story)** — Turn the bug report into a single implementable story with clear acceptance criteria and tech investigation notes.
    - focus: Focus on the search indexing behavior for code block content; include AC for both P_NUM finding the page and TEST continuing to work. Add tech notes on investigating Postgres full-text indexing of code blocks.
 2. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 3. [ ] **dev** _(auto)_ — Loop delivery.
