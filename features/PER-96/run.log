@@ -25,3 +25,8 @@
 2026-11-02T12:43:57.630211+00:00 heartbeat architect_gate
 2026-11-02T12:43:57.630328+00:00 node start architect_gate
 2026-11-02T12:44:04.073473+00:00 node end architect_gate waiting=architect_review
+2026-11-02T12:48:30.429211+00:00 heartbeat dev
+2026-11-02T12:48:30.429458+00:00 node start dev
+2026-11-02T12:48:31.906739+00:00 dev cursor 01-app attempt=1
+2026-11-02T12:57:57.000124+00:00 warning: no test command configured for app; verification skipped
+2026-11-02T12:57:57.002638+00:00 dev verify 01-app PASS attempt=1

@@ -1,0 +1,12 @@
+Search now finds XML tag names inside code blocks. `P_NUM`, `TEST`, and the other tag names in a fence all match.
+
+PostgreSQL's English parser treats `<P_NUM>` as an XML tag and drops it, so the name never reached the index. `TEST` sat between the tags, which is why that search already worked. `jsonToText` was already keeping the brackets.
+
+Code-block text now gets a space after each `<` before it is stored. `<P_NUM>` becomes `< P_NUM>`, which still contains the brackets and indexes `P_NUM`. Paragraphs and other nodes are unchanged. Pages pick this up the next time they are saved.
+
+Checked against the database: `P_NUM`, `TEST`, `ACT`, `OUTER`, `INNER`, `VALUE`, `FIRST`, `SECOND`, `TAG`, `CodeContent`, and `paragraph` all match. `apps/server` collaboration tests: 15 passed.
+
+Files changed:
+- `apps/server/src/collaboration/collaboration.util.ts`
+- `apps/server/src/collaboration/collaboration.util.spec.ts`
+- `apps/server/test/search/code-block-search.spec.ts`
