@@ -1,7 +1,7 @@
 ---
 schema_version: 1
 key: PER-96
-status: in_development
+status: developed
 current_node: dev
 track: standard
 involved_repos:
@@ -9,7 +9,7 @@ involved_repos:
 depends_on: []
 owner: goos
 lease_until: '2026-11-04T12:48:29.330080+00:00'
-revision: 48
+revision: 49
 hub_sha: null
 ticket_hash: 70947446b7a9a044
 jira_hash: 70947446b7a9a044
@@ -28,7 +28,7 @@ pr_ids:
   hub_plan: '3'
   hub_arch: '4'
   hub: '4'
-waiting_for: null
+waiting_for: human_pr
 tokens_in: 44087
 tokens_out: 9230
 cost_anthropic_usd: 0.270359
@@ -83,6 +83,9 @@ history:
 - node: dev
   note: done 01-app
   at: '2026-11-02T12:57:57.097758+00:00'
+- node: dev
+  note: 'human_mode: code ready, PR deferred'
+  at: '2026-11-02T12:57:59.845907+00:00'
 ---
 
 # Feature state

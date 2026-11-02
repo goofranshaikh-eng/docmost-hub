@@ -18,7 +18,7 @@ Bug fix for search not finding XML tag names inside code blocks; single-repo beh
    - focus: Examine how page text extraction handles code blocks in collaboration.util.ts and the search indexing pipeline. Provide a specific fix approach for including code block content in searchable text.
 3. [x] **test_architect (tests)** — Edge cases around code block search need explicit test coverage.
    - focus: Map tests to both acceptance criteria (P_NUM found, TEST still found), and add cases for nested tags, multiple code blocks, and mixed content/code.
-4. [ ] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
+4. [x] **architect_gate (review)** _(auto)_ — Human approval of specs and this plan before Dev.
 5. [ ] **dev** _(auto)_ — Loop delivery.
 6. [ ] **pre_pr_qa** _(auto)_ — Loop delivery.
 7. [ ] **open_pr** _(auto)_ — Loop delivery.
