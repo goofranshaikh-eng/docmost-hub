@@ -1,63 +1,60 @@
 # Requirements — PER-96
 
-Search does not find XML tag names inside code blocks
+**Type:** bug  
+**Title:** Search does not find XML tag names inside code blocks  
+**Epic:** (none)
+
+---
 
 ## Context
 
-A Docmost page contains a code block with XML content including tag names like `P_NUM` and `TEST`. Search for `TEST` returns the page, but search for `P_NUM` returns "No results found". Both terms appear in the page content and should be discoverable through whole-page search.
+A Docmost page contains a code block with XML tags. Searching for text inside those tags produces inconsistent results: some tag names are found, others are not.
 
-Upstream issue: https://github.com/docmost/docmost/issues/2264
-
-## Acceptance Criteria
-
-### Given a Docmost page with code block content
-**When** a user searches for text that appears inside a code block  
-**Then** the search returns that page in the results
-
-**Verification:**
-1. Create or navigate to a page containing a code block with the XML content:
+**Reproduction:**
+1. Create a page with a code block containing:
    ```
    <ACT>
      <P_NUM>TEST</P_NUM>
    </ACT>
    ```
-2. Search for "P_NUM"
-3. Verify the page appears in search results
-4. Search for "TEST"
-5. Verify the page still appears in search results (regression check)
+2. Search for `TEST` → page is returned
+3. Search for `P_NUM` → "No results found"
 
-### Given the existing search behavior for non-code-block content
-**When** the indexing fix is applied  
-**Then** existing search functionality continues to work without degradation
+Both strings appear in the same code block on the same page. Both must be findable.
 
-**Verification:**
-1. Search for text that appears outside code blocks on various pages
-2. Verify all expected results are returned
-3. Verify no performance regression in search response time
+---
 
-## Tech Notes
+## Acceptance Criteria
 
-### Investigation Areas
+### AC1: Search finds previously-missing tag name
+**Given** a page exists with a code block containing `<P_NUM>TEST</P_NUM>`  
+**When** a user searches for `P_NUM`  
+**Then** the page appears in search results
 
-1. **Postgres full-text indexing**: The app uses Postgres full-text search over page text. Investigate how code block content is currently processed during indexing:
-   - Check if code blocks are stripped or escaped during text extraction
-   - Review the `tsvector` generation for page content
-   - Identify if special characters or formatting markers interfere with tokenization
+### AC2: Search still finds previously-working tag content
+**Given** a page exists with a code block containing `<P_NUM>TEST</P_NUM>`  
+**When** a user searches for `TEST`  
+**Then** the page appears in search results
 
-2. **Code block parsing**: Examine how the page content is parsed before indexing:
-   - Are code blocks wrapped in markers that get indexed?
-   - Is there normalization that removes angle brackets or tag-like patterns?
-   - Check if markdown code fence content is included in searchable text
+### AC3: Search behavior is consistent across code block content
+**Given** a page exists with a code block containing multiple XML tags  
+**When** a user searches for any text string visible in that code block  
+**Then** the page appears in search results if the string matches
 
-3. **Search query processing**: Verify search term handling:
-   - Are special characters in search terms (like underscores in `P_NUM`) properly escaped?
-   - Does the search query use the same tokenization as the indexing?
+---
 
-### Scope
+## Notes
 
-- **In scope**: Fix indexing of code block content so tag names are searchable
-- **Out of scope**: Changes to search UI, search ranking, or search performance optimization beyond maintaining current behavior
+- Confirmed locally on the General space page "Testing Docmost" (http://localhost:5173/)
+- Title-only search is off; whole-page search is the target behavior
+- The bug is in how page text is extracted or indexed for search, not in the search query itself
+- Both `P_NUM` and `TEST` are in the same code block; one works, one does not — the extraction or indexing step is dropping or mangling tag names
 
-## Open Questions
+---
 
-None — the behavior is clear from the reproduction case.
+## Verification
+
+1. Create a test page with the reproduction code block
+2. Run search for `P_NUM` and confirm the page is returned
+3. Run search for `TEST` and confirm the page is still returned
+4. Verify no regression: existing searchable content (outside code blocks, in other formats) still returns expected results

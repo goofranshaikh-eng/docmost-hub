@@ -2,16 +2,16 @@
   "schema_version": 1,
   "key": "PER-96",
   "source": "llm",
-  "summary": "Search bug where XML tag names inside code blocks are not found by full-text search; quick_fix loop fits because the issue is isolated to search indexing logic in one repo with clear behavior.",
+  "summary": "Bug fix for search not finding XML tag names inside code blocks; single-repo behavioral fix with clear repro and acceptance criteria.",
   "track_hint": "standard",
-  "loop": "quick_fix",
+  "loop": "story_with_design",
   "delivery": "delivery",
   "pr_fix": [
     "pr_fix_minor",
     "pr_fix_moderate"
   ],
   "loops": [
-    "quick_fix",
+    "story_with_design",
     "delivery",
     "pr_fix_minor",
     "pr_fix_moderate"
@@ -20,8 +20,26 @@
     {
       "node": "analyst",
       "activity": "inline_story",
-      "why": "Turn the bug report into a single implementable story with clear acceptance criteria and tech investigation notes.",
-      "instructions": "Focus on the search indexing behavior for code block content; include AC for both P_NUM finding the page and TEST continuing to work. Add tech notes on investigating Postgres full-text indexing of code blocks.",
+      "why": "Turn the ticket into an implementable story with AC and technical notes.",
+      "instructions": "Focus on the search indexing behavior for code block content. The AC must verify both P_NUM (currently broken) and TEST (currently working) are found after the fix.",
+      "auto": false,
+      "status": "done",
+      "rerun": false
+    },
+    {
+      "node": "designer",
+      "activity": "lld",
+      "why": "Need concrete file plan for the search path mentioned in repo context.",
+      "instructions": "Examine how page text extraction handles code blocks in collaboration.util.ts and the search indexing pipeline. Provide a specific fix approach for including code block content in searchable text.",
+      "auto": false,
+      "status": "done",
+      "rerun": false
+    },
+    {
+      "node": "test_architect",
+      "activity": "tests",
+      "why": "Edge cases around code block search need explicit test coverage.",
+      "instructions": "Map tests to both acceptance criteria (P_NUM found, TEST still found), and add cases for nested tags, multiple code blocks, and mixed content/code.",
       "auto": false,
       "status": "done",
       "rerun": false
@@ -83,16 +101,20 @@
   ],
   "skipped": [
     {
+      "node": "tpm_gate",
+      "why": "Scope and acceptance criteria are clear: search must find text inside code blocks."
+    },
+    {
       "node": "critic",
-      "why": "Single inline story with no other artifacts to cross-check."
+      "why": "Only one story artifact; no cross-document consistency to check."
     }
   ],
   "suggested_roles": [],
   "suggested_loops": [],
   "notes": [
-    "attempt 1: designer is not a step of loop quick_fix"
+    "attempt 1: designer is not a step of loop quick_fix; test_architect is not a step of loop quick_fix"
   ],
-  "created_at": "2026-11-02T11:44:19.186081+00:00",
+  "created_at": "2026-11-02T12:15:04.502781+00:00",
   "version": 1,
   "trigger": "ticket",
   "gate": null,
